@@ -1,112 +1,167 @@
-## intent:network_issue
-- Actually, I gave a call regarding the network issues.
-- I called regarding network issue
-- I am facing the network issue
+version: "3.1"
 
-## intent:my_name_is
-- My name is [Ashish](NAME)
-- [ashish](NAME:Ashish) this side
-- It's [ashish](NAME:Ashish)
-- [ashish](NAME:Ashish) is my name
-- you can call me [Innovate](NAME)
-- [Ashish](NAME)
-- [Rahul](NAME)
-- [Innovate](NAME)
-- [ashish](NAME:Ashish)
-- [ashish](NAME:Ashish)
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
 
-## intent:facing_issue
-- I am facing [network issues](NETWORK). Every time I give a call, there is a call drop after connection. Sometimes it also takes more than 2 minutes to connect a call.
-- facing [network issues](NETWORK) every time I make a call. Sometime it takes a time longer than usual.
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
 
-## intent:headset
-- I am using a [samsung](BRAND:samsung) phone.
-- I have [One plus](BRAND) mobile
-- I am using [one +](BRAND:One plus)
-- I use [I-phone](BRAND)
-- I prefer [i phone](BRAND:I-phone)
-- i am using [one plus](BRAND:One plus) mobile
-- i am using [sam sung](BRAND:samsung)
-- i am using [oneplus](BRAND:One plus) mobile
-- i am using [nokia](BRAND) mobile
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
 
-## intent:guide_me
-- Could you please guide me?
-- could you suggest me how to do that?
-- guide me how to do it
-- i don't know how to do it
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
 
-## intent:have_to_do
-- What will I have to do to get a 4G SIM for the same number?
-- What is the procedure to get the 4G SIM for the same number
-- process to get the 4G SIM for the same number
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
 
-## intent:thanks
-- Thank you so much!
-- thanks
-- tnx
-- thank you so much
-- thanks alot
-- ty
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
 
-## intent:greet
-- hey
-- hello
-- hi
-- good morning
-- good evening
-- hey there
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
 
-## intent:goodbye
-- bye
-- goodbye
-- see you around
-- see you later
+- intent: ask_more_info
+  examples: |
+    - Can you tel me about your company?
+    - what is all about your company?
+    - what is your company doing?
 
-## intent:affirm
-- yes
-- indeed
-- of course
-- that sounds good
-- correct
 
-## intent:deny
-- no
-- never
-- I don't think so
-- don't like that
-- no way
-- not really
 
-## intent:mood_great
-- perfect
-- very good
-- great
-- amazing
-- wonderful
-- I am feeling very good
-- I am great
-- I'm good
+- intent: request_diagnosis
+  examples: |
+    - diagnosis
+    - Diagnosis
+    - Check Vital Signs
 
-## intent:mood_unhappy
-- sad
-- very sad
-- unhappy
-- bad
-- very bad
-- awful
-- terrible
-- not very good
-- extremely sad
-- so sad
+- intent: vs_temperature
+  examples: |
+    - [temperature](vital_sign)
+    - [Temp](vital_sign)
+    - [Heat](vital_sign)
+    - [pressure](vital_sign)
+    - [Pressure](vital_sign)
 
-## intent:bot_challenge
-- are you a bot?
-- are you a human?
-- am I talking to a bot?
-- am I talking to a human?
 
-## intent:number
-- [7](num:7)
-- [seven](num:7)
+- intent: vital_signs
+  examples: |
+    - i want to check [temperature](vital_sign)
+    - i want to check [Temp](vital_sign)
+    - i want to check [Heat](vital_sign)
+    - i want to check [heart](vital_sign)
+    - i want to check [Heart](vital_sign)
+    - i want to check [all](vital_sign)
+    - [all](vital_sign)
+    - [respiration](vital_sign)
+    - [Respiration](vital_sign)
+#
+#- intent: vs_pressure
+#  examples: |
+#    - [pressure](vital_sign)
+#    - [Pressure](vital_sign)
+#
+#- intent: vs_heart
+#  examples: |
+#    - [heart](vital_sign)
+#    - [Heart](vital_sign)
+#
+#- intent: vs_all
+#  examples: |
+#    - [all](vital_sign)
+#    - [all](vital_sign)
+#
+#- intent: vs_respiration
+#  examples: |
+#    - [respiration](vital_sign)
+#    - [Respiration](vital_sign)
 
+- intent: prescription
+  examples: |
+    - prescription
+    - Prescription
+    - Treating the patient
+    - prescribe the patient
+
+
+
+- intent: give_time
+  examples: |
+    - can you tell me what time it is
+    - tell me the time
+    - got the time
+    - what time is it
+
+- intent: start
+  examples: |
+    - Lets get Started
+    
