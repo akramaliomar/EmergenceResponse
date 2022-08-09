@@ -1,0 +1,77 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+#- rule: Ask for authentication code anytime the user says lets get started
+#  steps:
+#  - intent: start
+#  - action: utter_ask_code
+
+
+- rule: Authentication Form
+  steps:
+  - intent: start
+  - action: authentication_form
+  - active_loop: authentication_form
+
+- rule: Submit Authentication Form
+  condition:
+  - active_loop: authentication_form
+  steps:
+  - action: authentication_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_authentication
+  - action: utter_check_device
+  - action: utter_what_to_do
+
+- rule: Interruption in Authentication Form
+  condition:
+  # Condition that form is active.
+  - active_loop: authentication_form
+  steps:
+  # This unhappy path handles the case of an intent `bot_challenge`.
+  - intent: bot_challenge
+  - action: utter_iamabot
+  # Return to form after handling the `bot_challenge` intent
+  - action: authentication_form
+  - active_loop: authentication_form
+
+- rule: Diagnosis Form
+  steps:
+  - intent: request_diagnosis
+  - action: diagnosis_forms
+  - active_loop: diagnosis_forms
+
+- rule: Submit Diagnosis Form
+  condition:
+  - active_loop: diagnosis_forms
+  steps:
+  - action: diagnosis_forms
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: action_diagnosis
+
+- rule: Interruption in diagnosis Form
+  condition:
+  # Condition that form is active.
+  - active_loop: diagnosis_forms
+  steps:
+  # This unhappy path handles the case of an intent `bot_challenge`.
+  - intent: bot_challenge
+  - action: utter_iamabot
+  # Return to form after handling the `bot_challenge` intent
+  - action: diagnosis_forms
+  - active_loop: diagnosis_forms
