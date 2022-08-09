@@ -1,34 +1,51 @@
-## happy path greet 
-* greet
-  - utter_greet
-  
-## happy path without 4g sim
-* thanks
-  - utter_goodbye
+version: "3.1"
 
+stories:
 
-## say goodbye
-* goodbye
-  - utter_goodbye
+#- story: happy path
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: mood_great
+#  - action: utter_happy
+#
+#- story: sad path 1
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: mood_unhappy
+#  - action: utter_cheer_up
+#  - action: utter_did_that_help
+#  - intent: affirm
+#  - action: utter_happy
+#
+#- story: sad path 2
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: mood_unhappy
+#  - action: utter_cheer_up
+#  - action: utter_did_that_help
+#  - intent: deny
+#  - action: utter_goodbye
 
-## bot challenge
-* bot_challenge
-  - utter_iamabot
+- story: happy info path
+  steps:
+  - intent: ask_more_info
+  - action: action_hello_world
+#
+#- story: path about time
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: give_time
+#  - action: action_show_time
 
-## happy path
-* network_issue
-  - form_info
-  - form{"name": "form_info"}
-  - form{"name": null}
-* affirm
-  - utter_tell_issue
-* facing_issue
-  - utter_change_settings
-* guide_me
-  - utter_solution
-* have_to_do
-  - utter_solution_4G
-* thanks
-  - utter_anything_else
-* deny
- - utter_thanks
+- story: hapy path greeting
+  steps:
+    - intent: greet
+    - action: utter_medbot_greet
+    - action: utter_medbot_intro
+    - action: utter_ask_start
+    - intent: deny
+    - action: utter_goodbye
